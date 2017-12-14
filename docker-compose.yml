@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  app:
+    build: ./
+    working_dir: /app
+    volumes:
+      - ./:/app
+    ports:
+      - 80:80
+    depends_on:
+      - db
+    environment:
+      XDEBUG_CONFIG: "idekey=PHPSTORM remote_enable=On remote_connect_back=On"
+    links:
+      - db:mysql.dev
+
+  db:
+    image: mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: formbay
+      MYSQL_USER: formbay
+      MYSQL_PASSWORD: formbaypassword
