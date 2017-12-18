@@ -6,7 +6,7 @@
 #else
 # webroot=/var/www
 #fi
-
+cd /var/www
 
 # Display PHP error's or not
 if [[ "$ERRORS" != "1" ]] ; then
